@@ -1,0 +1,27 @@
+stages:
+  #init:
+   # cmd: export MLFLOW_RUN_ID=`python src/utils/start_pipeline.py`
+  pull_data:
+    cmd: dvc pull
+  featurize:
+    cmd: python src/features/build_features.py data/raw data/processed
+    deps:
+    - data/raw
+    - src/features/build_features.py
+    outs:
+    - data/processed
+  train:
+    cmd: python src/models/train_model.py data/processed models/model.pkl
+    deps:
+    - data/processed
+    - src/models/train_model.py
+    params:
+    - train.alpha
+    outs:
+    - models/model.pkl
+  evaluate:
+    cmd: python src/models/evaluate_model.py models/model.pkl data/processed
+    deps:
+    - data/processed
+    - models/model.pkl
+    - src/models/evaluate_model.py

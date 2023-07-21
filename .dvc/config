@@ -1,0 +1,4 @@
+[core]
+    remote = ng_data_remote4
+['remote "ng_data_remote4"']
+    url = /home/ubuntu/dvc_remote1

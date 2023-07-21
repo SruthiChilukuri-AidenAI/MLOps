@@ -1,0 +1,60 @@
+schema: '2.0'
+stages:
+  init:
+    cmd: export MLFLOW_RUN_ID=`python src/utils/start_pipeline.py`
+  pull_data:
+    cmd: dvc pull
+  featurize:
+    cmd: python src/features/build_features.py data/raw data/processed
+    deps:
+    - path: data/raw
+      hash: md5
+      md5: 8ad518e499b78572390acd10d3d30ed2.dir
+      size: 3720222
+      nfiles: 6
+    - path: src/features/build_features.py
+      hash: md5
+      md5: f546ac9fe62e62131dde0de876061418
+      size: 1797
+    outs:
+    - path: data/processed
+      hash: md5
+      md5: 5b5a83456dc8fc09d75e7c0794b7c849.dir
+      size: 481545670
+      nfiles: 2
+  train:
+    cmd: python src/models/train_model.py data/processed models/model.pkl
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: 5b5a83456dc8fc09d75e7c0794b7c849.dir
+      size: 481545670
+      nfiles: 2
+    - path: src/models/train_model.py
+      hash: md5
+      md5: 5dbbeabf4b446f7ae1d2d997f0c03c4c
+      size: 1162
+    params:
+      params.yaml:
+        train.alpha: 0.82
+    outs:
+    - path: models/model.pkl
+      hash: md5
+      md5: 76bf45cc9d3f56a88567a85ddeb7b6f1
+      size: 982958
+  evaluate:
+    cmd: python src/models/evaluate_model.py models/model.pkl data/processed
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: 5b5a83456dc8fc09d75e7c0794b7c849.dir
+      size: 481545670
+      nfiles: 2
+    - path: models/model.pkl
+      hash: md5
+      md5: 76bf45cc9d3f56a88567a85ddeb7b6f1
+      size: 982958
+    - path: src/models/evaluate_model.py
+      hash: md5
+      md5: 72b2b146b5ae08ed39eaad1a246dadb8
+      size: 1944
