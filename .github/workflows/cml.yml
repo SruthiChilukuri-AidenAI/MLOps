@@ -1,15 +1,15 @@
 name: ML Workflow with CML
-on:
-  push:
-    branches:
-      - NGTextClfModelTraining
+on: [push]
+  #push:
+  #  branches:
+  #    - NGTextClfModelTraining
       
-  pull_request:
-    branches: 
-      - NGTextClfModelTraining 
+  #pull_request:
+  #  branches: 
+  #    - NGTextClfModelTraining 
       
-  release:
-    types: [created]  
+  #release:
+  #  types: [created]  
       
 jobs:
   train_model:
