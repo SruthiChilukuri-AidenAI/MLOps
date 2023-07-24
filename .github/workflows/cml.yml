@@ -4,6 +4,10 @@ on:
     branches:
       - NGTextClfModelTraining
       
+  pull_request:
+    branches:
+      - NGTextClfModelTraining
+      
 jobs:
   train_model:
     runs-on: ubuntu-latest
