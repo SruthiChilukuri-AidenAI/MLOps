@@ -1,8 +1,7 @@
 name: ML Workflow with CML
-on: [push]
-  #push:
-  #  branches:
-  #    - NGTextClfModelTraining
+on:
+  push:
+    branches: ["NGTextClfModelTraining"]
       
   #pull_request:
   #  branches: 
@@ -21,10 +20,10 @@ jobs:
       with: 
        ref: NGTextClfModelTraining
 
-   # - name: Set up Python
-   #   uses: actions/setup-python@v2
-   #   with:
-   #     python-version: '3.x' # Specify your desired Python version
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x' # Specify your desired Python version
 
    # - name: Install dependencies
    #   run: |
