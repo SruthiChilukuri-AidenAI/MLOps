@@ -1,5 +1,5 @@
 name: ML Workflow with CML
-on:[push] 
+on: [push] 
 
 jobs:
   train_model:
