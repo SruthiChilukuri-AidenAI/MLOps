@@ -1,0 +1,27 @@
+name: ML Workflow with CML
+on:
+  push:
+    branches:
+      - NGTextClfModelTraining
+      
+jobs:
+  train_model:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with: 
+       ref: NGTextClfModelTraining
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x' # Specify your desired Python version
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        # Additional setup steps if needed
+
+   # - name: Train the model
+   #   run: python setup.py # Replace with the command to run your training script
