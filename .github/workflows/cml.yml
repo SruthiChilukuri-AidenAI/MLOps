@@ -9,7 +9,7 @@ on:
       - NGTextClfModelTraining 
       
   release:
-    types: [created]      
+    types: [created]  
       
 jobs:
   train_model:
