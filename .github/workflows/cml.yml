@@ -20,6 +20,13 @@ jobs:
       run: |
         pip install -r requirements.txt
         # Additional setup steps if needed
+        
+    - name: Connect to EC2 instance
+      uses: easingthemes/ssh-deploy@v2.1.5
+      with:
+        REMOTE_HOST: "34.229.134.14"
+        REMOTE_USER: "ubuntu"
+        SSH_PRIVATE_KEY: ${{ secrets.EC2SSHPRIVATEKEY }}
 
-    - name: Train the model
-      run: make run_pipeline
+    #- name: Train the model
+    #  run: make run_pipeline
