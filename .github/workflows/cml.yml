@@ -3,7 +3,7 @@ on: [push]
 
 jobs:
   train_model:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
    
     steps:
     - name: Checkout code
@@ -11,22 +11,22 @@ jobs:
       with: 
        ref: NGTextClfModelTraining
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x' # Specify your desired Python version
+    #- name: Set up Python
+    #  uses: actions/setup-python@v2
+    #  with:
+    #    python-version: '3.x' # Specify your desired Python version
 
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
-        # Additional setup steps if needed
+    #- name: Install dependencies
+    #  run: |
+    #    pip install -r requirements.txt
+    #    # Additional setup steps if needed
         
-    - name: Connect to EC2 instance
-      uses: easingthemes/ssh-deploy@v2.1.5
-      with:
-        SSH_PRIVATE_KEY: ${{ secrets.EC2SSHPRIVATEKEY }}
-        REMOTE_HOST: "ec2-34-229-134-14.compute-1.amazonaws.com"
-        REMOTE_USER: "ubuntu"
+    #- name: Connect to EC2 instance
+    #  uses: easingthemes/ssh-deploy@v2.1.5
+    #  with:
+    #    SSH_PRIVATE_KEY: ${{ secrets.EC2SSHPRIVATEKEY }}
+    #    REMOTE_HOST: "ec2-34-229-134-14.compute-1.amazonaws.com"
+    #    REMOTE_USER: "ubuntu"
         
 
     #- name: Train the model
