@@ -24,9 +24,10 @@ jobs:
     - name: Connect to EC2 instance
       uses: easingthemes/ssh-deploy@v2.1.5
       with:
+        SSH_PRIVATE_KEY: ${{ secrets.EC2SSHPRIVATEKEY }}
         REMOTE_HOST: "ec2-34-229-134-14.compute-1.amazonaws.com"
         REMOTE_USER: "ubuntu"
-        SSH_PRIVATE_KEY: ${{ secrets.EC2SSHPRIVATEKEY }}
+        
 
     #- name: Train the model
     #  run: make run_pipeline
