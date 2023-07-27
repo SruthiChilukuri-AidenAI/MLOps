@@ -8,8 +8,9 @@ jobs:
     steps:
     - name: Checkout code
       run: |
+        cd /home/ubuntu/mlops1/MLOps &&
         git clone https://github.com/SruthiKeerthana/MLOps.git
-
+    
     #- name: Set up Python
     #  uses: actions/setup-python@v2
     #  with:
