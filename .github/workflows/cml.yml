@@ -9,6 +9,10 @@ jobs:
         run: |
           cd /home/ubuntu/mlops1
           git clone https://github.com/SruthiKeerthana/MLOps.git
+          if [ -d "/home/ubuntu/mlops1/MLOps" ]; then
+            echo "Repository already exists. Skipping cloning step."
+            exit 0  # Exit with success to skip subsequent steps
+          fi          
           
       - name: Checkout code
         uses: actions/checkout@v2
