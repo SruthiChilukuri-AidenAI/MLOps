@@ -1,4 +1,4 @@
 train:
-    alpha: 0.82
+    alpha: 0.9
 mlflow:
     run_id: xyz
