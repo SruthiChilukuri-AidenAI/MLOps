@@ -11,7 +11,9 @@ jobs:
           git clone https://github.com/SruthiKeerthana/MLOps.git
           
       - name: Checkout code
-        uses: actions/checkout@NGTextClfModelTraining
+        uses: actions/checkout@v2
+        with:
+          ref: NGTextClfModelTraining
     
     #- name: Set up Python
     #  uses: actions/setup-python@v2
