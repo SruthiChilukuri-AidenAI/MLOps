@@ -22,8 +22,7 @@ jobs:
         run: |
           pip install -r requirements.txt
           
-      - name: Activate virtual environment
-        run: source /home/ubuntu/mlflow/pyvenvs/mlopstest1/bin/activate
-
-    #- name: Train the model
-    #  run: make run_pipeline
+      - name: Activate VE and Train the Model
+        run: |
+          source /home/ubuntu/mlflow/pyvenvs/mlopstest1/bin/activate 
+          make run_pipeline
