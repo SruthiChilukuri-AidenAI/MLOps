@@ -15,7 +15,7 @@ jobs:
         with:
           SSH_PRIVATE_KEY: ${{ secrets.EC2SSHPRIVATEKEY }}
           REMOTE_HOST: "34.229.134.14"
-          REMOTE_USER: "ubuntu"         
+          REMOTE_USER: "ubuntu"
     
     #- name: Set up Python
     #  uses: actions/setup-python@v2
