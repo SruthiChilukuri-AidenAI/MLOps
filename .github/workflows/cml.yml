@@ -3,19 +3,12 @@ on: [push]
 
 jobs: 
   train-model:
-    runs-on: ubuntu-latest 
+    runs-on: self-hosted
     steps:
       - name: Checkout integration branch
-        uses: actions/checkout@v3
-        with: 
-          ref: NGTextClfModelTraining
-        
-      - name: Connect to EC2 instance
-        uses: easingthemes/ssh-deploy@v2.1.5
-        with:
-          SSH_PRIVATE_KEY: ${{ secrets.EC2SSHPRIVATEKEY }}
-          REMOTE_HOST: "34.229.134.14"
-          REMOTE_USER: ubuntu
+        run: |
+          cd /home/ubuntu/mlops1
+          git clone https://github.com/SruthiKeerthana/MLOps.git
     
     #- name: Set up Python
     #  uses: actions/setup-python@v2
