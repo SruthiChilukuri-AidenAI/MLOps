@@ -9,6 +9,9 @@ jobs:
         run: |
           cd /home/ubuntu/mlops1
           git clone https://github.com/SruthiKeerthana/MLOps.git
+          
+      - name: Checkout code
+        uses: actions/checkout@NGTextClfModelTraining
     
     #- name: Set up Python
     #  uses: actions/setup-python@v2
