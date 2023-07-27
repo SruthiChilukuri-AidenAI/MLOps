@@ -5,15 +5,13 @@ jobs:
   train-model:
     runs-on: self-hosted
     steps:
-      - name: Checkout integration branch
+      - name: clone repo into ec2
         run: |
           cd /home/ubuntu/mlops1
           git clone https://github.com/SruthiKeerthana/MLOps.git
           
       - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          ref: NGTextClfModelTraining
     
     #- name: Set up Python
     #  uses: actions/setup-python@v2
