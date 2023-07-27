@@ -8,32 +8,19 @@ jobs:
       - name: clone repo into ec2
         run: |
           cd /home/ubuntu/mlops1
-          git clone https://github.com/SruthiKeerthana/MLOps.git
-          if [ -d "/home/ubuntu/mlops1/MLOps" ]; then
-            echo "Repository already exists. Skipping cloning step."
-            exit 0  # Exit with success to skip subsequent steps
-          fi          
+          git clone https://github.com/SruthiKeerthana/MLOps.git          
           
       - name: Checkout code
         uses: actions/checkout@v2
     
-    #- name: Set up Python
-    #  uses: actions/setup-python@v2
-    #  with:
-    #    python-version: '3.x' # Specify your desired Python version
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10' # Specify your desired Python version
 
-    #- name: Install dependencies
-    #  run: |
-    #    pip install -r requirements.txt
-    #    # Additional setup steps if needed
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
         
-    #- name: Connect to EC2 instance
-    #  uses: easingthemes/ssh-deploy@v2.1.5
-    #  with:
-    #    SSH_PRIVATE_KEY: ${{ secrets.EC2SSHPRIVATEKEY }}
-    #    REMOTE_HOST: "ec2-34-229-134-14.compute-1.amazonaws.com"
-    #    REMOTE_USER: "ubuntu"
-        
-
     #- name: Train the model
     #  run: make run_pipeline
