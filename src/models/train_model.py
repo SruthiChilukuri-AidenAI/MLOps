@@ -1,9 +1,11 @@
-import sys
 import os
+import pickle
+import sys
+
+import mlflow
 import yaml
 from sklearn.naive_bayes import MultinomialNB
-import pickle
-import mlflow
+
 from utils.mlflow_utils import get_mlflow_cfg
 
 # read the command line params
@@ -14,7 +16,7 @@ if len(sys.argv) != 3:
 
 features_path = sys.argv[1]
 model_filename = sys.argv[2]
-print(features_path)
+
 # read pipeline params
 params = yaml.safe_load(open("params.yaml"))["train"]
 
